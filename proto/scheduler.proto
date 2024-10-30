@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package scheduler;
+option go_package="./scheduler";
+
+// 定义任务状态枚举
+enum JobStatus {
+  PENDING = 0;
+  RUNNING = 1;
+  COMPLETED = 2;
+  FAILED = 3;
+}
+
+// 创建任务请求
+message CreateJobRequest {
+  string name = 1;
+  string command = 2;
+  map<string, string> env = 3;
+  repeated string args = 4;
+}
+
+// 创建任务响应
+message CreateJobResponse {
+  string job_id = 1;
+  JobStatus status = 2;
+}
+
+// Ping 请求响应
+message Request {
+  string ping = 1;
+}
+
+message Response {
+  string pong = 1;
+}
+
+service Scheduler {
+  rpc Ping(Request) returns(Response);
+  rpc Dispatch(CreateJobRequest) returns(CreateJobResponse);
+}
+

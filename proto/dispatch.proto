@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package dispatch;
+option go_package="./dispatch";
+
+message CreateJobRequest {
+  string name = 1;           // 任务名称
+  string namespace = 2;      // k8s命名空间
+  string image = 3;          // 容器镜像
+  string task_type = 4;      // 任务类型
+  map<string, string> env = 5;    // 环境变量
+  map<string, string> labels = 6; // 标签
+  repeated string commands = 7;    // 执行命令
+  repeated string args = 8;        // 命令参数
+  int32 parallelism = 9;     // 并行度
+  int32 completions = 10;    // 完成数
+  int32 backoff_limit = 11;  // 重试次数
+  int32 active_deadline_seconds = 12; // 超时时间
+}
+
+message CreateJobResponse {
+  string job_name = 1;      // 创建的job名称
+  string status = 2;        // 创建状态
+  string message = 3;       // 状态信息
+}
+
+service Dispatch {
+  // 创建K8s Job
+  rpc CreateJob(CreateJobRequest) returns(CreateJobResponse);
+}
