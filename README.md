@@ -1,7 +1,6 @@
-# K8s Scheduler Component 🚀
+# StarInspect Scheduler 🚀
 
-[![Go Version](https://img.shields.io/badge/Go-1.16%2B-blue)](https://golang.org)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-1.16%2B-326CE5)](https://kubernetes.io)
+[![Go Version](https://img.shields.io/badge/Go-1.16%2B-blue)](https://golang.org) [![Kubernetes](https://img.shields.io/badge/Kubernetes-1.16%2B-326CE5)](https://kubernetes.io)
 
 ## 📖 项目简介
 
@@ -27,6 +26,12 @@
   </tr>
 </table>
 
+
+## 🔄 调度流程
+
+![工作流程](img/flow.png)
+
+
 ## 🚀 快速开始
 
 ### 环境要求
@@ -35,40 +40,31 @@
 - Go 1.16+
 - Docker
 
-### 部署步骤
-
-### 配置说明
-
-### API 使用
-
-### 监控告警
-
-### 常见问题
-
-## 📚 开发指南
-
-### 本地开发环境搭建
-
-### 代码结构
-
-### 核心模块说明
-
-### 测试指南
 
 ## 🤝 参与贡献
 
 ### 贡献指南
 
-### 开发规范
+1. Fork 本仓库
+2. 创建您的特性分支 (`git checkout -b feature/AmazingFeature`)
+3. 提交您的更改 (`git commit -m 'Add some AmazingFeature'`)
+4. 推送到分支 (`git push origin feature/AmazingFeature`)
+5. 提交 Pull Request
 
-### 提交 PR 流程
+欢迎任何形式的贡献，包括但不限于:
 
-## 📄 其他
-
-### 版本发布记录
+- 🐛 提交问题和建议
+- 📝 改进文档
+- ⚡️ 提供新功能或优化性能
 
 ### 开源协议
 
-### 联系我们
+本项目采用 [MIT 许可证](LICENSE)。
+
+您可以自由地:
+- 使用、复制、修改、合并、出版发行、散布、再授权及贩售软件及软件的副本。
+- 被授权人可根据程序的需要修改授权条款为适当的内容。
+
+唯一的限制是，在软件和软件的所有副本中都必须包含版权声明和许可声明。
 
 
