@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+message TaskDefineSpec {
+  string idl_code = 1;      // idlid，表示唯一idl
+  string idl_type = 2;      // 同步器类型
+  string idl_name = 3;      // 同步器名称
+  string idl_version = 4;   // 同步器版本
+  RelatedImage related_image = 5;  // 相关镜像信息
+  string definition = 6;  // 可以是任意合法的JSON对象
+  message RelatedImage {
+    string builder = 1;    // 构建器名称
+    string digest = 2;     // 镜像digest
+    string version = 3;    // ImageBuild.status中的构建版本
+    string namespace = 4;  // 命名空间
+  }
+}
+
+message TaskDefineStatus {
+  string state = 1;         // 状态
+  string message = 2;       // 消息
+  string last_updated = 3;  // 最后更新时间
+}
+
+message TaskDefine {
+  TaskDefineSpec spec = 1;
+  TaskDefineStatus status = 2;
+}
+
+message CreateTaskDefineRequest {
+  map<string, string> metadata =1;
+  TaskDefineSpec spec = 2;
+}
+
+message CreateTaskDefineResponse {
+  int32 code = 1;
+  string message = 2;
+  TaskDefine data = 3;
+}
+
+message UpdateTaskDefineRequest {
+  map<string, string> metadata =1;
+  TaskDefineSpec spec = 2;
+}
+
+message UpdateTaskDefineResponse {
+  int32 code = 1;
+  string message = 2;
+  TaskDefine data = 3;
+}
+
+message DeleteTaskDefineRequest {
+  map<string, string> metadata =1;
+}
+
+message DeleteTaskDefineResponse {
+  int32 code = 1;
+  string message = 2;
+}
+
+message GetTaskDefineRequest {
+  map<string, string> metadata =1;
+}
+
+message GetTaskDefineResponse {
+  int32 code = 1;
+  string message = 2;
+  TaskDefine data = 3;
+}
+
+message ListTaskDefinesRequest {
+  map<string, string> metadata =1;
+  int32 page_size = 2;
+  int32 page_num = 3;
+  map<string, string> labels = 4;
+}
+
+message ListTaskDefinesResponse {
+  int32 code = 1;
+  string message = 2;
+  repeated TaskDefine data = 3;
+  int32 total = 4;
+}

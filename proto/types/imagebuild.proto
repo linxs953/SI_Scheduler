@@ -1,0 +1,103 @@
+message GitConfig {
+  string url = 1;     // git 仓库地址
+  string branch = 2;  // 分支名称
+}
+
+// 镜像相关配置
+message ImageConfig {
+  string name = 1;    // 镜像名称
+  string tag = 2;     // 镜像标签
+}
+
+// 清理配置
+message CleanupConfig {
+  bool enabled = 1;      // 是否启用清理
+  int32 max_builds = 2;  // 保留的最大构建数量
+}
+
+// ImageBuild的返回对象
+message BuildConfig {
+  string id = 1;              // 配置ID
+  GitConfig git = 2;          
+  ImageConfig image = 3;      
+  int32 rebuild_flag = 4;     
+  CleanupConfig cleanup = 5;  
+  string created_at = 6;      // 创建时间
+  string updated_at = 7;      // 更新时间
+}
+
+// 构建
+message CreateImageBuildRequest {
+  GitConfig git = 1;           // git 配置
+  ImageConfig image = 2;       // 镜像配置
+  int32 rebuild_flag = 3;      // 重建标志
+  CleanupConfig cleanup = 4;   // 清理配置
+}
+
+// 构建响应消息
+message CreateImageBuildResponse {
+  int32 Code = 1;
+  bool success = 2;            // 构建是否成功
+  string message = 3;          // 响应消息
+  string build_id = 4;         // 构建ID
+}
+
+// 更新构建请求
+message UpdateBuildRequest {
+  string id = 1;              // 要更新的配置ID
+  GitConfig git = 2;          
+  ImageConfig image = 3;      
+  int32 rebuild_flag = 4;     
+  CleanupConfig cleanup = 5;  
+}
+
+// 更新构建响应
+message UpdateBuildResponse {
+  int32 code = 1;
+  bool success = 2;           
+  string message = 3;         
+  BuildConfig config = 4;     // 返回更新后的配置
+}
+
+
+// 删除构建请求
+message DeleteBuildRequest {
+  string id = 1;              // 要删除的配置ID
+}
+
+// 删除构建响应
+message DeleteBuildResponse {
+  int32 code = 1;
+  bool success = 2;           
+  string message = 3;         
+}
+
+// 获取构建请求
+message GetBuildRequest {
+  string id = 1;              // 要获取的配置ID
+}
+
+// 获取构建响应
+message GetBuildResponse {
+  int32 code = 1;
+  bool success = 2;           
+  string message = 3;         
+  BuildConfig config = 4;     // 返回查询到的配置
+}
+
+
+// 列出所有构建请求
+message ListBuildsRequest {
+  int32 page_size = 1;        // 每页数量
+  int32 page_num = 2;         // 页码
+}
+
+// 列出所有构建响应
+message ListBuildsResponse {
+  int32 code = 1;
+  bool success = 2;           
+  string message = 3;         
+  repeated BuildConfig configs = 4;  // 配置列表
+  int32 total = 5;            // 总数
+}
+

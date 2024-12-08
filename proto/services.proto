@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package scheduler;
+option go_package="./scheduler";
+
+service Scheduler {
+  // TaskDefine 相关操作
+  rpc CreateTaskDefine(CreateTaskDefineRequest) returns (CreateTaskDefineResponse) {}
+  rpc UpdateTaskDefine(UpdateTaskDefineRequest) returns (UpdateTaskDefineResponse) {}
+  rpc DeleteTaskDefine(DeleteTaskDefineRequest) returns (DeleteTaskDefineResponse) {}
+  rpc GetTaskDefine(GetTaskDefineRequest) returns (GetTaskDefineResponse) {}
+  rpc ListTaskDefines(ListTaskDefinesRequest) returns (ListTaskDefinesResponse) {}
+  
+  // ImageBuild 相关操作
+  rpc CreateImageBuild(CreateImageBuildRequest) returns (CreateImageBuildResponse) {}
+  rpc UpdateImageBuild(UpdateBuildRequest) returns (UpdateBuildResponse) {}
+  rpc DeleteImageBuild(DeleteBuildRequest) returns (DeleteBuildResponse) {}
+  rpc GetImageBuild(GetBuildRequest) returns (GetBuildResponse) {}
+  rpc ListImageBuilds(ListBuildsRequest) returns (ListBuildsResponse) {}
+}

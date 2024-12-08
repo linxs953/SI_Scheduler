@@ -1,0 +1,8 @@
+Name: scheduler.rpc
+ListenOn: 0.0.0.0:8080
+Log:
+  Encoding: plain
+
+Kubernetes:
+  InCluster: false
+  KubeConfig: "/Users/xslin/.kube/parallel_cluster.yaml"
